@@ -1,11 +1,11 @@
-FROM openjdk:8u151-jdk-alpine3.7
-  
-EXPOSE 8080
- 
-ENV APP_HOME /usr/src/app
+FROM adoptopenjdk/openjdk11
 
-COPY target/secretsanta-0.0.1-SNAPSHOT.jar $APP_HOME/app.jar
+ENV APP_HOME /usr/src/app
 
 WORKDIR $APP_HOME
 
-ENTRYPOINT exec java -jar app.jar 
+COPY target/*.jar $APP_HOME/app.jar
+
+EXPOSE 8080
+
+CMD ["java". "-jar", "app.jar"]
